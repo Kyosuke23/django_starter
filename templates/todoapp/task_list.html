@@ -1,0 +1,24 @@
+{% extends 'common/base.html' %}
+{% block content %}
+<h1>Todo List</h1>
+<a href="{% url 'task_create' %}">タスクの追加</a>
+
+<form action="" method="GET">
+  <input type="text" name="search" value="{{ search }}" />
+  <input type="submit" value="search" />
+</form>
+
+<table>
+  <tr>
+    <th>タスク一覧</th>
+  </tr>
+  {% for task in task_list %}
+  <tr>
+    <td>{{ task.title }}</td>
+    <td><a href="{% url 'task_detail' task.id %}">確認</a></td>
+    <td><a href="{% url 'task_edit' task.id %}">編集</a></td>
+    <td><a href="{% url 'task_delete' task.id %}">削除</a></td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock content %}

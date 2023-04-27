@@ -1,0 +1,8 @@
+{% extends 'common/base.html' %}
+{% block content %}
+<form action="" method="post">{% csrf_token %}
+  <p>{{ task }}を本当に削除しますか？</p>
+  <input type="submit" value="Delete" />
+</form>
+<a href="{% url 'task_list' %}">back</a>
+{% endblock content %}
